@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+   <thead id="duc">
+       <th>
+            id
+       </th>
+       <th>
+            name
+        </th>
+        <th>
+            diachi
+        </th>
+        <th>
+            anh
+        </th>
+        <th>
+        <button class="btn btn-sm btn-success">them moi</button>
+        </th>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+    
+        <script src="duc.js"></script>
+</body>
+</html>
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+var t=document.querySelector('tbody')
+var url="https://611567e18f38520017a384cd.mockapi.io/hotel"
+fetch (url,{
+    method:"GET"
+})
+.then((resurt)=> resurt.json())
+
+.then((data)=>{
+    t.innerHTML=``;
+    console.log(data)
+    var content=` `
+    data.forEach(function(element) {
+        content =content+`<tr id="row-${element.id}">
+         <td>${element.id} .</td>
+         <td>${element.name}</td>
+         <td>${element.address}</td>
+         <td>
+            <img src="${element.logo}" with="70"/>
+        </td>
+        <td>
+            <button class="btn btn-sm btn-primasy" >sua</button> 
+            <button class="btn btn-sm btn-danger" onclick="removeElenment(${element.id})">xoa</button> 
+        </td>
+       </tr>`
+    })
+    t.innerHTML=content;
+})
+function removeElenment(id){
+    var chid=document.querySelector('#row-'+id)
+    chid.parentNode.removeChild(chid)
+}
