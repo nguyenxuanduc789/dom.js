@@ -33,7 +33,7 @@
         <script src="duc.js"></script>
 </body>
 </html>
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ XOA TREN GIAO DIEN
 var t=document.querySelector('tbody')
 var url="https://611567e18f38520017a384cd.mockapi.io/hotel"
 fetch (url,{
@@ -64,4 +64,44 @@ fetch (url,{
 function removeElenment(id){
     var chid=document.querySelector('#row-'+id)
     chid.parentNode.removeChild(chid)
+}
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ XOA TREN GIAO DIEN & API
+var t=document.querySelector('tbody')
+var url="https://611567e18f38520017a384cd.mockapi.io/hotel"
+fetch (url,{
+    method:"GET"
+})
+.then((resurt)=> resurt.json())
+
+.then((data)=>{
+    t.innerHTML=``;
+    console.log(data)
+    var content=` `
+    data.forEach(function(element) {
+        content =content+`<tr id="row-${element.id}">
+         <td>${element.id} .</td>
+         <td>${element.name}</td>
+         <td>${element.address}</td>
+         <td>
+            <img src="${element.logo}" with="70"/>
+        </td>
+        <td>
+            <button class="btn btn-sm btn-primasy" >sua</button> 
+            <button class="btn btn-sm btn-danger" onclick="removeElenment(${element.id})">xoa</button> 
+        </td>
+       </tr>`
+    })
+    t.innerHTML=content;
+})
+function removeElenment(id){
+    var chid=document.querySelector('#row-'+id)
+    chid.parentNode.removeChild(chid)
+    var urldelete=url +"/" +id
+    fetch(urldelete,{
+        method:"delete"
+    })
+    .then((xoa)=> xoa.json())
+    .then((data)=>{
+        console.log(data)
+    })
 }
