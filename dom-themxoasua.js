@@ -117,7 +117,7 @@ fetch (url,{
 </table>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script >
-
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ XOA TREN GIAO DIEN
 var t=document.querySelector('tbody')
 var url="https://611567e18f38520017a384cd.mockapi.io/hotel"
 fetch (url,{
@@ -166,7 +166,13 @@ fetch (url,{
                                             })
                                             .then(rl=>rl.json())
                                             .then(data=>{
-                                                    console.log(data)
+                                                Swal.fire({
+                                                position: 'top-end',
+                                                icon: 'success',
+                                                title: 'Your work has been saved',
+                                                showConfirmButton: false,
+                                                timer: 1500
+                                                })
                                             })
                                 }
                                 })
@@ -174,5 +180,6 @@ fetch (url,{
         </script>
 </body>
 </html>
+
 
 
