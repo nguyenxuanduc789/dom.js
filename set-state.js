@@ -13,7 +13,6 @@ class Button extends Component {
         return <button type="button" className="btn btn-warning" onClick={()=>this.thaidoi()}>Them</button>
     }
     thaidoi=()=>{
-
     this.setState({
         trangthai: !this.state.trangthai
     })
