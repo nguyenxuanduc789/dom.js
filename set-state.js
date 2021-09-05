@@ -71,7 +71,7 @@ class App extends Component {
     return (
       <div>
         <Button ketnoi={()=>this.thaidoi()}/>
-        <Tile trangthai={this.state.trangthai}/>
+        <Tile trangthai1={this.state.trangthai}/>
       </div>
     );
   }
@@ -101,7 +101,7 @@ import React, { Component } from 'react';
 class Tile extends Component {
 
     kiemtra=()=>{
-        if (this.props.trangthai===true)
+        if (this.props.trangthai1===true)
     {
     return( 
         <form>
